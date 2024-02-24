@@ -1,0 +1,35 @@
+
+<div class="container">
+    <div class="container-head">Blogs based on your interests</div>
+    <ul class="responsive-table">
+        <li class="table-header">
+            <div class="col col-1">Sr no.</div>
+            <div class="col col-6">Image</div>
+            <div class="col col-2">Title</div>
+            <div class="col col-3">Tags</div>
+            <div class="col col-4" style="justify-content: center;">Link</div>
+            <div class="col col-5">Content</div>
+        </li>
+        <div class="scrollable-div" id="style-1">
+            {% for blog in blogs %}
+            <li class="table-row">
+                <div class="col col-1" data-label="Job Id">{{ forloop.counter }}</div>
+                <div class="col col-6" data-label="Customer Name" style="height: 70px;">
+                    <img src="{{source}}thumbs/{{blog.image}}" alt="image" style="width: 100%; height: 100%;" />
+                </div>
+                <div class="col col-2" data-label="Customer Name">{{ blog.title|first }}</div>
+                <div class="col col-3" data-label="Amount">{{ blog.keywords|join:", " }}</div>
+                <div class="col col-4"
+                    style=" align-items: center;justify-content: center;display: flex; height: 40%; width: 40%;">
+                    <a href="{{ blog.link }}" target="_blank" style="width: 45%;"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path
+                                d="M9.26 13a2 2 0 0 1 .01-2.01A3 3 0 0 0 9 5H5a3 3 0 0 0 0 6h.08a6.06 6.06 0 0 0 0 2H5A5 5 0 0 1 5 3h4a5 5 0 0 1 .26 10zm1.48-6a2 2 0 0 1-.01 2.01A3 3 0 0 0 11 15h4a3 3 0 0 0 0-6h-.08a6.06 6.06 0 0 0 0-2H15a5 5 0 0 1 0 10h-4a5 5 0 0 1-.26-10z" />
+                        </svg></a>
+                </div>
+                <div class="col col-5"><a class="button-30" href="home/{{ blog.id }}">Read me</a></div>
+            </li>
+            {% endfor %}
+        </div>
+    </ul>
+</div>

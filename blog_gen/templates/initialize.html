@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}" />
+    <link rel="stylesheet" href="{% static 'initialize.css' %}" />
+  </head>
+
+  <body style="background: aliceblue; font-family: "JetBrains Mono", monospace;">
+    <div>
+      {% include 'navigation.html' %}
+
+      <form action="" method="post">
+        <fieldset class="checkbox-group">
+          <legend class="checkbox-group-legend">Choose your favourite categories</legend>
+          {% csrf_token %}
+          {% for category in categories %}
+            <div class="checkbox">
+              <label class="checkbox-wrapper">
+                <input type="checkbox" class="checkbox-input" value="{{ category }}" id="{{ category }}" name="{{ category }}" />
+                <span class="checkbox-tile">
+                  <span class="checkbox-icon"><div style="background: url({% static 'category/thumbs/'|add:category|urlencode %}.png); background-size: cover; background-repeat: no-repeat; background-position: center center; width: 9.75rem; height: 10rem; margin-left: 0.125rem; border-radius: 0.35rem;"></div></span>
+                  <span class="checkbox-label"><label for="{{ category }}">{{ category }}</label></span>
+                </span>
+              </label>
+            </div>
+          {% endfor %}
+        </fieldset>
+        <input class="button-30" type="submit" value="Submit" style="width: fit-content; margin: 1rem 0rem 2rem 0rem;" />
+      </form>
+    </div>
+    {% if message %}
+    <div id="loadingOverlay">
+      <div class="button-30" onclick="document.getElementById('loadingOverlay').style.display='none'">Error: {{message}}</div>
+    </div>
+    {% endif %}
+  </body>
+</html>

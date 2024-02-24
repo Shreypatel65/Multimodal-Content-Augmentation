@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'home.css' %}" />
+  <style>
+    #messageOverlay,
+    #loadingOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      font-size: 1.5rem;
+    }
+
+    .loadingSpinner {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body style="background: aliceblue;">
+  {% include 'navigation.html' %}
+  <div class="card">
+    <form method="post">
+      {% csrf_token %}
+      <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="p-6 bg-white border-b border-gray-200">
+              <form method="POST" action="/test" onsubmit="show_loader(event)">
+                <div class="mb-4">
+                  <label class="text-xl text-gray-600">Link <span class="text-red-500">*</span></label></br>
+                  <input type="text" class="border-2 border-gray-300 p-2 w-full" name="link" id="title" value=""
+                    required>
+                </div>
+
+                <div class="mb-8">
+                  <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label></br>
+                  <textarea name="content" class="border-2 border-gray-500">
+
+                                </textarea>
+                </div>
+
+                <div class="flex p-1">
+                  <button role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div id="loadingOverlay">
+    <div class="loadingSpinner"></div>
+    <div style="margin-top: 25px;"> Longer Blogs Might Take Time to Process... </div>
+  </div>
+  {% if message %}
+  <div id="messageOverlay">
+    <div class="button-30" onclick="document.getElementById('messageOverlay').style.display='none'">Error: {{message}}</div>
+  </div>
+  {% endif %}
+  <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+  <script>
+    CKEDITOR.replace('content');
+    document.getElementById('loadingOverlay').style.display = 'none';
+    my_form = document.getElementsByTagName('form')[0]
+    my_form.addEventListener('submit', show_loader)
+    function show_loader(event) {
+      document.getElementById('loadingOverlay').style.display = 'flex';
+      event.preventDefault();
+      event.target.submit();
+    }
+  </script>
+</body>
+
+</html>

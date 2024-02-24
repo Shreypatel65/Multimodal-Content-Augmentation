@@ -1,0 +1,7 @@
+.env
+db.sqlite3
+images/
+blog_gen/static/thumbs/
+audio/
+migrations/
+__pycache__/

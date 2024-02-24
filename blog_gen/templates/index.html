@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var errorDiv = document.querySelector('.error-div');
+            if (errorDiv) {
+                setTimeout(function () {
+                    errorDiv.style.display = 'none';
+                }, 7000); 
+            }
+        });
+    </script>
+
+
+</head>
+
+<body>
+    {% if is_signup %}
+    <div class="card">
+        <h3 class="card-title">SignUp</h3>
+        <form action="/signup" method="post">
+            {% csrf_token %}
+            <div class="form-row">
+                <label for="username">Username:</label>
+                <input type="text" class="form__field" name="username" id="username" required>
+            </div>
+            <div class="form-row">
+                <label for="password">Password:</label>
+                <input type="password" class="form__field" name="password" id="password" required>
+            </div>
+            <div class="error-div">{{message}}</div>
+            <div class="form-button">
+                <button class="button-30" role="button" onclick="window.location.href='/'">Login?</button>
+                <input type="submit" class="button-30" value="SignUp">
+            </div>
+
+        </form>
+    </div>
+    {% else %}
+    <div class="card">
+        <h3 class="card-title">Login</h3>
+        <form action="/login" method="post">
+            {% csrf_token %}
+            <div class="form-row">
+                <label for="username">Username:</label>
+                <input type="text" class="form__field" name="username" id="username" required>
+            </div>
+            <div class="form-row">
+                <label for="password">Password:</label>
+                <input type="password" class="form__field" name="password" id="password" required>
+            </div>
+            <div class="error-div">{{message}}</div>
+            <div class="form-button">
+                <button class="button-30" role="button" onclick="window.location.href='/signup'">SignUp?</button>
+                <input type="submit" class="button-30" role="button" value="Login">
+            </div>
+        </form>
+    </div>
+
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}" />
+  </head>
+
+  <body style="background: aliceblue;">
+    {% include 'navigation.html' %}
+    {% include 'blog-list.html' %}
+
+    <!-- <button onclick="window.location.href='/logout'">Logout</button> -->
+  </body>
+</html>

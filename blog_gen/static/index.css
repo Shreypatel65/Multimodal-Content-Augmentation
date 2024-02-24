@@ -1,0 +1,216 @@
+body {
+    background: #8ab1d3;
+    /* background: aliceblue; */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    font-family: "JetBrains Mono", monospace;
+}
+
+
+*::-webkit-scrollbar {
+    width: 15px;
+    background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #8a8787;
+}
+
+*::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dynamic-content {
+    font-size: 40px;
+}
+
+.model-name {
+    margin-right: 10px;
+}
+
+.equation {
+    flex: 1;
+    color: #FCFCFD;
+    font-size: x-large;
+}
+
+.equation p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.table_area {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card {
+
+    width: 27vw;
+    height: 50vh;
+    border-radius: 30px;
+    background: #FCFCFD;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
+    padding: 2.5%;
+    margin: 1em 3em 3em 3em;
+    font-size: x-large;
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+}
+
+.form__group {
+    position: relative;
+    padding: 20px 0 0;
+    width: 100%;
+    max-width: 180px;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 70%;
+    border: none;
+    border-bottom: 3px solid #9b9b9b;
+    outline: 0;
+    font-size: 24px;
+    color: inherit;
+    padding-bottom: 5px;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.form__field:placeholder-shown~.form__label {
+    font-size: 17px;
+    cursor: text;
+    top: 20px;
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #9b9b9b;
+    pointer-events: none;
+}
+
+.form__field:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #116399, #38caef);
+    border-image-slice: 1;
+}
+
+
+
+.form__field:required,
+.form__field:invalid {
+    box-shadow: none;
+}
+
+th {
+    vertical-align: bottom;
+}
+
+.submit_btn {
+    height: 40px;
+    background-color: #dee3e6;
+    border: 2px groove;
+    border-radius: 25px;
+}
+
+.submit_btn_div {
+    padding: 0.5em;
+    display: grid;
+}
+
+.button-30 {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px inset, #D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono", monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s, transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+    font-size: 18px;
+}
+
+.button-30:focus {
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+.button-30:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+}
+
+.card-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 10vh;
+    text-align: center;
+}
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    margin-top: 2em;
+}
+.form-button {
+    height: 35%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-evenly;
+}
+form {
+    height: 100%;
+}
+.error-div{
+    color: red;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 2em;
+}
